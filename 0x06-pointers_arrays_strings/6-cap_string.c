@@ -2,20 +2,31 @@
 #include <stdio.h>
 
 /**
- *  main - check the code
- * 
- *  Return: Always 0.
- */
-
-int main(void)
-
+  * cap_string - ...
+  * @s: ...
+  *
+  * Return: char value
+  */
+char *cap_string(char *s)
 {
-	char str[] = "Expect the best. Prepare for the worst. Capitalize on what comes.\nhello world! hello-world 0123456hello world\thello world.hello world\n";
-	
-	char *ptr;
+	int a = 0, i;
+	int cspc = 13;
+	char spc[] = {32, '\t', '\n', 44, ';', 46, '!', '?', '"', '(', ')', '{', '}'};
 
-	ptr = cap_string(str);
-	printf("%s", ptr);
-	printf("%s", str);
-	return (0);
+	while (s[a])
+	{
+		i = 0;
+
+		while (i < cspc)
+		{
+			if ((a == 0 || s[a - 1] == spc[i]) && (s[a] >= 97 && s[a] <= 122))
+				s[a] -= 32;
+
+			i++;
+		}
+
+		a++;
+	}
+
+	return (s);
 }
